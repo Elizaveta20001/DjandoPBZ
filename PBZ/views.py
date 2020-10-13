@@ -8,3 +8,6 @@ def home_page(request):
 
 def page_product(request):
     return render(request,'page_product.html',{})
+
+def form_product(request):
+    return render(request,'form_product.html',{})
