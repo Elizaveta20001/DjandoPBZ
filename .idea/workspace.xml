@@ -19,11 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78681393-d09e-467b-9895-97cae3a264b5" name="Default Changelist" comment="Added function for edit product">
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/delete_page.html" afterDir="false" />
+    <list default="true" id="78681393-d09e-467b-9895-97cae3a264b5" name="Default Changelist" comment="Added function for delete product">
+      <change afterPath="$PROJECT_DIR$/PBZ/templates/form_customer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PBZ/templates/form_waybill.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PBZ/templates/forn_destination.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PBZ/templates/waybill.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PBZ/templates/edit_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/edit_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PBZ/templates/page_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/page_product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PBZ/templates/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/home_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PBZ/templates/show_category_of_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/show_category_of_product.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PBZ/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PBZ/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
@@ -106,7 +109,9 @@
       <workItem from="1602611246069" duration="1780000" />
       <workItem from="1602623415670" duration="4744000" />
       <workItem from="1602662140737" duration="1050000" />
-      <workItem from="1602664448916" duration="4580000" />
+      <workItem from="1602664448916" duration="6019000" />
+      <workItem from="1602680640753" duration="3561000" />
+      <workItem from="1602705769643" duration="6496000" />
     </task>
     <task id="LOCAL-00001" summary="first_commit">
       <created>1602611312638</created>
@@ -157,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602667836810</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added function for delete product">
+      <created>1602669676615</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1602669676615</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +195,8 @@
     <MESSAGE value="Added form for create product" />
     <MESSAGE value="Added function for create product" />
     <MESSAGE value="Added function for edit product" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added function for edit product" />
+    <MESSAGE value="Added function for delete product" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added function for delete product" />
   </component>
   <component name="WindowStateProjectService">
     <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1602611266113">
@@ -194,26 +207,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="634" y="310" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1602611143830" />
-    <state width="1478" height="208" key="GridCell.Tab.0.bottom" timestamp="1602669479853">
+    <state width="1478" height="208" key="GridCell.Tab.0.bottom" timestamp="1602706566933">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602669479853" />
-    <state width="1478" height="208" key="GridCell.Tab.0.center" timestamp="1602669479853">
+    <state width="1478" height="208" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602706566933" />
+    <state width="1478" height="208" key="GridCell.Tab.0.center" timestamp="1602706566932">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602669479853" />
-    <state width="1478" height="208" key="GridCell.Tab.0.left" timestamp="1602669479852">
+    <state width="1478" height="208" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1602706566932" />
+    <state width="1478" height="208" key="GridCell.Tab.0.left" timestamp="1602706566931">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602669479852" />
-    <state width="1478" height="208" key="GridCell.Tab.0.right" timestamp="1602669479853">
+    <state width="1478" height="208" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1602706566931" />
+    <state width="1478" height="208" key="GridCell.Tab.0.right" timestamp="1602706566932">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1478" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602669479853" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1602625116455">
+    <state width="1478" height="208" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1602706566932" />
+    <state width="1478" height="258" key="GridCell.Tab.1.bottom" timestamp="1602684435914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1602625116455" />
+    <state width="1478" height="258" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1602684435914" />
+    <state width="1478" height="258" key="GridCell.Tab.1.center" timestamp="1602684435914">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1478" height="258" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1602684435914" />
+    <state width="1478" height="258" key="GridCell.Tab.1.left" timestamp="1602684435914">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1478" height="258" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1602684435914" />
+    <state width="1478" height="258" key="GridCell.Tab.1.right" timestamp="1602684435914">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1478" height="258" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1602684435914" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1602669679743">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1602669679743" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1602668015244">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

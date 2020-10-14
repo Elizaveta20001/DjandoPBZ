@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'common.html' %}
+{% block content %}
+    <body class="container-fluid"
+          style="background-image: url('http://www.bvinyl.com/image/catalog/texts/bvinyl-warehouse.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="container-fluid" style="background-color: white">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Категории</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for item in product %}
+                    <tr>
 
-</body>
-</html>
+
+                    <td>{{ item}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    </body>
+{% endblock %}
