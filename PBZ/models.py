@@ -26,7 +26,7 @@ class Destination(models.Model):
 
 
 class Waybill(models.Model):
-    product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     customer = models.OneToOneField(Customer, on_delete=models.CASCADE)
     current_price = models.FloatField()
     date= models.DateField()

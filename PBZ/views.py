@@ -1,3 +1,4 @@
+from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from PBZ.models import *
 from django.shortcuts import HttpResponseRedirect
@@ -23,3 +24,22 @@ def create_product(request):
         company = request.POST['company']
         Product(name=name,category=category,company=company).save()
         return HttpResponseRedirect('/product_page')
+def edit_page(request):
+    context = {}
+    context['product'] = Product.objects.all()
+    return render(request,'edit_page.html',context)
+
+def edit_product(request,product_id):
+    try:
+        product = Product.objects.get(id=product_id)
+
+        if request.method == "POST":
+            product.name = request.POST["name_product"]
+            product.category = request.POST["category"]
+            product.company = request.POST["company"]
+            product.save()
+            return HttpResponseRedirect("/edit_page")
+        else:
+            return render(request, "edit.html", {"product": product})
+    except Product.DoesNotExist:
+        return HttpResponseNotFound("<h2>Person not found</h2>")

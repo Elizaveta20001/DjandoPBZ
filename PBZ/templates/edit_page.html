@@ -1,0 +1,23 @@
+{% extends 'common.html' %}
+{% block content %}
+    <body class="container-fluid"
+          style="background-image: url('http://www.tcsfloors.com/wp-content/uploads/2017/08/AdobeStock_107182915-1024x683.jpeg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="container-fluid" style="background-color: white">
+        <div class="row" style="background-color: #b3d7ff;border-color: #1d2124">
+            <div class="col-3">Название товара</div>
+            <div class="col-3">Категория товара</div>
+            <div class="col-3">Компания, производящая товар</div>
+            <div class="col-3"></div>
+        </div>
+        {% for item in product %}
+            <div class="row" style="border: 5px;border-color: #1d2124">
+            <div class="col-3">{{ item.name }}</div>
+            <div class="col-3">{{ item.category }}</div>
+            <div class="col-3">{{ item.company }}</div>
+             <div class="col-3"><a href="{% url 'edit_product' item.id %}">Редактировать</a></div>
+        </div>
+        {% endfor %}
+    </div>
+
+    </body>
+{% endblock %}
