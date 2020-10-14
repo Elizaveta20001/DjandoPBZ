@@ -84,18 +84,25 @@ def page_waybill(request):
 def form_waybill(request):
     context = {}
     temp = []
+    temp_destination = []
     context['product'] = Product.objects.all()
-    #for i in Waybill.objects.all():
-       # flag = True
-        #for j in Customer.objects.all():
-         #   if i.customer == j:
-           #     flag = False
-           # if flag == True:
-            #    temp.append(j)
+    for i in Customer.objects.all():
+        flag = True
+        for j in Waybill.objects.all():
+            if j.customer.id == i.id:
+                flag = False
+        if flag:
+            temp.append(i)
+    for i in Destination.objects.all():
+        flag = True
+        for j in Waybill.objects.all():
+            if j.destination.id == i.id:
+                flag = False
+        if flag:
+            temp_destination.append(i)
 
-
-    context['customer'] = Customer.objects.all()
-    context['destination'] = Destination.objects.all()
+    context['customer'] = temp
+    context['destination'] = temp_destination
     return render(request, 'form_waybill.html', context)
 
 
