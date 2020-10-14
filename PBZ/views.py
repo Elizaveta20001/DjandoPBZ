@@ -43,3 +43,16 @@ def edit_product(request,product_id):
             return render(request, "edit.html", {"product": product})
     except Product.DoesNotExist:
         return HttpResponseNotFound("<h2>Person not found</h2>")
+
+def delete_page(request):
+    context = {}
+    context['product'] = Product.objects.all()
+    return render(request,'delete_page.html',context)
+
+def delete_product(request,product_id):
+    try:
+        product = Product.objects.get(id=product_id)
+        product.delete()
+        return HttpResponseRedirect('/delete_page')
+    except Product.DoesNotExist:
+        return HttpResponseNotFound("<h2>Person not found</h2>")

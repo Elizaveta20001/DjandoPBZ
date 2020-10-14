@@ -6,7 +6,6 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>#</th>
                 <th>Название товара</th>
                 <th>Категория товара</th>
                 <th>Компания, поизводящая товар</th>
@@ -16,12 +15,12 @@
             <tbody>
                 {% for item in product %}
                     <tr>
-                    <th scope="row">{{ item.id }}</th>
+
 
                     <td>{{ item.name }}</td>
                     <td>{{ item.category }}</td>
                     <td>{{ item.company }}</td>
-                    <td><a href="{% url 'edit_product' item.id %}">Редактировать</a></td>
+                    <td><a href="{% url 'delete_product' item.id %}">Удалить</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
