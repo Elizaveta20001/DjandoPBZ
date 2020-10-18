@@ -16,12 +16,10 @@
                     <div class="form-group" style="background-color: rgba(255, 250, 250,0.9);width: 700px;height: 500px;margin-left: -100px">
                         <br>
                             <a href="{% url 'product_page'%}" type="submit" class="btn btn-outline-dark my-2"
-                               style="height: 70px;width: 500px">Добавление/редактирование/удаление информации о
-                                товарах</a>
+                               style="height: 70px;width: 500px">Управление товарами</a>
                             <br>
                             <a href="{% url 'page_waybill' %}" type="submit" class="btn btn-outline-dark my-2"
-                                    style="height: 70px;width: 500px">Добавление/редактирование/удаление информации
-                                о накладных
+                                    style="height: 70px;width: 500px">Управление накладными
                             </a>
                             <br>
                             <a href="{% url 'show_customer' %}" type="submit" class="btn btn-outline-dark my-2"
@@ -29,7 +27,7 @@
                                 на максимальную сумму на выбранную дату
                             </a>
                             <br>
-                            <a href="#" type="submit" class="btn btn-outline-dark my-2"
+                            <a href="{% url 'price_change' %}" type="submit" class="btn btn-outline-dark my-2"
                                     style="height: 70px;width: 500px">Просмотр списка изменений стоимости заданного
                                 товара за указанный период времени
                             </a>

@@ -1,0 +1,97 @@
+{% extends 'common.html' %}
+{% block content %}
+    {% if error == False %}
+    <body class="container-fluid"
+          style="background-image: url('http://www.bvinyl.com/image/catalog/texts/bvinyl-warehouse.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <form class="rounded" method="post">
+        {% csrf_token %}
+        <div class="form-inline"
+             style="background-color: rgba(255, 250, 250,0.9); padding-left: 10px;padding-top: 30px;padding-bottom: 30px;padding-right: 10px;width: 1000px;margin-top: 10px">
+
+            <select style="height: 40px;margin-right: 10px" name="product">
+                {% for item in product %}
+                    <option value="{{ item.id}}">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+            <input class="form-control" type="text" placeholder="Начальная дата"
+                   name='first_date'
+                   aria-label="date" style="width: 300px;margin-right: 10px">
+            <input class="form-control" type="text" placeholder="Конечная дата"
+                   name='last_date'
+                   aria-label="date" style="width: 300px;margin-right: 10px">
+            <button type="submit" class="btn btn-dark ">Посмотреть
+            </button>
+
+            <br>
+        </div>
+    </form>
+    <div class="container-fluid" style="background-color: white">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Товар</th>
+                <th>Компания</th>
+                <th>Дата</th>
+                <th>Цена</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in waybill %}
+                <tr>
+
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.product.company }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.current_price}}</td>
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    </body>
+    {% else %}
+        <body class="container-fluid"
+          style="background-image: url('http://www.bvinyl.com/image/catalog/texts/bvinyl-warehouse.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <form class="rounded" method="post">
+        {% csrf_token %}
+        <div class="form-inline"
+             style="background-color: rgba(255, 250, 250,0.9); padding-left: 10px;padding-top: 30px;padding-bottom: 30px;padding-right: 10px;width: 1000px;margin-top: 10px">
+
+            <select style="height: 40px;margin-right: 10px" name="product">
+                {% for item in product %}
+                    <option value="{{ item.id}}">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+            <input class="form-control" type="text" placeholder="Начальная дата"
+                   name='first_date'
+                   aria-label="date" style="width: 300px;border-color: red;margin-right: 10px">
+            <input class="form-control" type="text" placeholder="Конечная дата"
+                   name='last_date'
+                   aria-label="date" style="width: 300px;border-color: red;margin-right: 10px">
+            <button type="submit" class="btn btn-dark ">Посмотреть
+            </button>
+
+            <br>
+        </div>
+    </form>
+    <div class="container-fluid" style="background-color: white">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Товар</th>
+                <th>Компания</th>
+                <th>Дата</th>
+                <th>Цена</th>
+            </tr>
+            </thead>
+        </table>
+
+    </div>
+
+    </body>
+    {% endif %}
+{% endblock %}

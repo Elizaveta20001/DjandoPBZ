@@ -3,6 +3,8 @@ from django.shortcuts import render
 from PBZ.models import *
 from django.shortcuts import HttpResponseRedirect
 from django.db.models import Max
+import datetime
+import re
 
 
 def home_page(request):
@@ -38,18 +40,23 @@ def edit_page(request):
 
 def edit_product(request, product_id):
     try:
+        context = {}
         product = Product.objects.get(id=product_id)
-
+        context['product'] = product
         if request.method == "POST":
-            product.name = request.POST["name_product"]
-            product.category = request.POST["category"]
-            product.company = request.POST["company"]
-            product.save()
-            return HttpResponseRedirect("/edit_page")
+            if (request.POST["name_product"] == '' or request.POST["category"] == '' or request.POST["company"] == ''):
+                context['error'] = True
+                return render(request, 'edit.html', context)
+            else:
+                product.name = request.POST["name_product"]
+                product.category = request.POST["category"]
+                product.company = request.POST["company"]
+                product.save()
+                return HttpResponseRedirect("/edit_page")
         else:
-            return render(request, "edit.html", {"product": product})
+            return render(request, "edit.html", context)
     except Product.DoesNotExist:
-        return HttpResponseNotFound("<h2>Person not found</h2>")
+        return HttpResponseNotFound("<h2>Product not found</h2>")
 
 
 def delete_page(request):
@@ -82,7 +89,7 @@ def page_waybill(request):
     return render(request, 'waybill.html', {})
 
 
-def form_waybill(request):
+def create_context():
     context = {}
     temp = []
     temp_destination = []
@@ -104,6 +111,11 @@ def form_waybill(request):
 
     context['customer'] = temp
     context['destination'] = temp_destination
+    return context
+
+
+def form_waybill(request):
+    context = create_context()
     return render(request, 'form_waybill.html', context)
 
 
@@ -138,7 +150,7 @@ def create_destination(request):
             request.POST['house_number'] == '' or request.POST['flat_number'] == '':
         context = {}
         context['error'] = True
-        return render(request, 'form_customer.html', context)
+        return render(request, 'forn_destination.html', context)
     else:
         country = request.POST['country']
         region_name = request.POST['region_name']
@@ -152,7 +164,7 @@ def create_destination(request):
 
 def create_waybill(request):
     if request.POST['current_price'] == '' or request.POST['date'] == '' or request.POST['number_of_product'] == '':
-        context = {}
+        context = create_context()
         context['error'] = True
         return render(request, 'form_waybill.html', context)
     else:
@@ -171,18 +183,32 @@ def show_customer(request):
     temp = []
     temp_sum = 0
     context = {}
+
     if request.method == 'POST':
-        for item in Waybill.objects.filter(date=request.POST['date']):
-            if temp_sum < item.number_of_product * item.current_price:
-                temp_sum = item.number_of_product * item.current_price
+        if request.POST['date'] == '':
+            context['error'] = True
+            return render(request, 'show_customer.html', context)
+        else:
+            try:
+                for item in Waybill.objects.filter(date=request.POST['date']):
+                    if temp_sum < item.number_of_product * item.current_price:
+                        temp_sum = item.number_of_product * item.current_price
+                    else:
+                        continue
+                for item in Waybill.objects.filter(date=request.POST['date']):
+                    if temp_sum == item.number_of_product * item.current_price:
+                        temp.append(item.customer)
+            except:
+                context['error'] = True
+                return render(request, 'show_customer.html', context)
             else:
-                continue
-        for item in Waybill.objects.filter(date=request.POST['date']):
-            if temp_sum == item.number_of_product * item.current_price:
-                temp.append(item.customer)
-        context['customer'] = temp
-        return render(request, 'show_customer.html', context)
+                context['customer'] = temp
+                context['error'] = False
+                return render(request, 'show_customer.html', context)
+
+
     else:
+        context['error'] = False
         return render(request, 'show_customer.html', context)
 
 
@@ -191,12 +217,13 @@ def edit_waybill_page(request):
     context['waybill'] = Waybill.objects.all()
     return render(request, 'edit_waybill.html', context)
 
-def edit_waybill(request,waybill_id):
+
+def edit_waybill(request, waybill_id):
     try:
         waybill = Waybill.objects.get(id=waybill_id)
 
         if request.method == "POST":
-            waybill.product= request.POST["product"]
+            waybill.product = request.POST["product"]
             waybill.customer = request.POST["customer"]
             waybill.current_price = request.POST[""]
             waybill.date = request.POST[""]
@@ -230,10 +257,12 @@ def edit_waybill(request,waybill_id):
     except Waybill.DoesNotExist:
         return HttpResponseNotFound("<h2>Waybill not found</h2>")
 
+
 def page_delete_waybill(request):
     context = {}
     context['waybill'] = Waybill.objects.all()
-    return render(request,'delete_waybill.html',context)
+    return render(request, 'delete_waybill.html', context)
+
 
 def delete_waybill(request, waybill_id):
     try:
@@ -244,3 +273,31 @@ def delete_waybill(request, waybill_id):
         return HttpResponseNotFound("<h2>Waybill not found</h2>")
 
 
+def show_price_change(request):
+    context = {}
+    temp = []
+    if request.method == 'POST':
+        if request.POST['first_date'] == '' or request.POST['last_date'] == '':
+            context['error'] = True
+            context['product'] = Product.objects.all()
+            return render(request, 'show_price_change.html', context)
+        else:
+            try:
+                for item in Waybill.objects.filter(product=request.POST['product']):
+                    if item.date >= datetime.datetime.strptime(request.POST['first_date'],
+                                                               '%Y-%m-%d').date() and item.date <= datetime.datetime.strptime(
+                        request.POST['last_date'], '%Y-%m-%d').date():
+                        temp.append(item)
+            except:
+                context['error'] = True
+                context['product'] = Product.objects.all()
+                return render(request,'show_price_change.html',context)
+            else:
+                context['error'] = False
+                context['waybill'] = temp
+                context['product'] = Product.objects.all()
+                return render(request, 'show_price_change.html', context)
+    else:
+        context['error'] = False
+        context['product'] = Product.objects.all()
+        return render(request, 'show_price_change.html', context)

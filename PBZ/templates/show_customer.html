@@ -1,39 +1,78 @@
 {% extends 'common.html' %}
 {% block content %}
-    <body class="container-fluid"
-          style="background-image: url('http://www.bvinyl.com/image/catalog/texts/bvinyl-warehouse.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-    <form class="rounded" method="post">
-                    {% csrf_token %}
-                    <div class="form-inline"
-                         style="background-color: rgba(255, 250, 250,0.9); padding-left: 100px;padding-top: 30px;padding-bottom: 30px;padding-right: 100px;width: 500px;margin-top: 10px">
+    {% if error == False %}
+        <body class="container-fluid"
+              style="background-image: url('http://www.bvinyl.com/image/catalog/texts/bvinyl-warehouse.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <form class="rounded" method="post">
+            {% csrf_token %}
+            <div class="form-inline"
+                 style="background-color: rgba(255, 250, 250,0.9); padding-left: 10px;padding-top: 30px;padding-bottom: 30px;padding-right: 10px;width: 500px;margin-top: 1px">
 
-                        <input class="form-control" type="text" placeholder="Дата"
-                               name='date'
-                               aria-label="date" style="width: 300px"><button type="submit" class="btn btn-dark ">Посмотреть
-                        </button>
+                <input class="form-control" type="text" placeholder="Дата"
+                       name='date'
+                       aria-label="date" style="width: 300px;margin-left: 10px;margin-right: 10px">
+                <button type="submit" class="btn btn-dark ">Посмотреть
+                </button>
 
-                        <br>
-                    </div>
-                </form>
-    <div class="container-fluid" style="background-color: white">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Покупатели</th>
-            </tr>
-            </thead>
-            <tbody>
+                <br>
+            </div>
+        </form>
+        <div class="container-fluid" style="background-color: white">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Покупатели</th>
+                </tr>
+                </thead>
+                <tbody>
                 {% for item in customer %}
                     <tr>
 
 
-                    <td>{{ item.name}}</td>
+                        <td>{{ item.name }}</td>
                     </tr>
                 {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
-    </div>
 
-    </body>
+        </div>
+
+        </body>
+    {% else %}
+        <body class="container-fluid"
+              style="background-image: url('http://www.bvinyl.com/image/catalog/texts/bvinyl-warehouse.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <div class="container-fluid"
+             style="background-image: url('http://www.bvinyl.com/image/catalog/texts/bvinyl-warehouse.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+            <form class="rounded" method="post">
+                {% csrf_token %}
+                <div class="form-inline"
+                     style="background-color: rgba(255, 250, 250,0.9); padding-left: 10px;padding-top: 30px;padding-bottom: 30px;padding-right: 10px;width: 500px;margin-top: 10px">
+
+                    <input class="form-control" type="text" placeholder="Дата"
+                           name='date'
+                           aria-label="date" style="width: 300px;border-color: red;margin-left: 10px;margin-right: 10px">
+                    <button type="submit" class="btn btn-dark ">Посмотреть
+                    </button>
+
+                    <br>
+                    <label style="margin-left: 10px"><h6>Enter the date in format %Y-%m-%d</h6></label>
+                    <br>
+                </div>
+            </form>
+
+            <div class="container-fluid" style="background-color: white">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Покупатели</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+
+
+        </div>
+        </body>
+    {% endif %}
 {% endblock %}

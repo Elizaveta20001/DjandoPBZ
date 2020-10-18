@@ -22,7 +22,8 @@ urlpatterns = [
     path('edit_waybill_page',views.edit_waybill_page,name='edit_waybill_page'),
     path('edit_waybill/<int:waybill_id>/',views.edit_waybill,name='edit_waybill'),
     path('delete_waybill_page',views.page_delete_waybill,name='delete_waybill_page'),
-    path('delete_waybill/<int:waybill_id>/',views.delete_waybill,name='delete_waybill')
+    path('delete_waybill/<int:waybill_id>/',views.delete_waybill,name='delete_waybill'),
+    path('show_price_change',views.show_price_change,name='price_change')
 
 
 ]

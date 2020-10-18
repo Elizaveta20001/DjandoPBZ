@@ -10,6 +10,24 @@
                     {% csrf_token %}
                     <div class="form-group"
                          style="background-color: rgba(255, 250, 250,0.9); padding-left: 100px;padding-top: 30px;padding-bottom: 30px;padding-right: 100px;width: 500px;margin-top: 100px">
+                        {% if error == True %}
+                        <label for="exampleInputEmail1"><h3>Изменить товар</h3></label>
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="{{ product.name}}"
+                               name='name_product'
+                               aria-label="name_product" style="width: 300px;border-color: red"
+                                value="{{ product.name}}">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="{{ product.name}}"
+                               name='category'
+                               aria-label="category" style="width: 300px;border-color: red" value="{{ product.category }}">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="{{ product.name}}"
+                               name='company'
+                               aria-label="company" style="width: 300px;border-color: red" value="{{ product.company }}">
+                        <br>
+                        <br>
+                        {% else %}
                         <label for="exampleInputEmail1"><h3>Изменить товар</h3></label>
                         <br>
                         <input class="form-control mr-sm-2" type="text" placeholder="{{ product.name}}"
@@ -26,6 +44,7 @@
                                aria-label="company" style="width: 300px" value="{{ product.company }}">
                         <br>
                         <br>
+                        {% endif %}
                         <button type="submit" class="btn btn-dark mr-sm-2">Изменить
                         </button>
                         <br>
