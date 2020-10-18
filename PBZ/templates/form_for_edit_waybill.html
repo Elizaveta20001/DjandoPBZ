@@ -1,0 +1,77 @@
+{% block content %}
+    <body class="container-fluid"
+          style="background-image: url('https://diamantvrn.ru/files/images/sklad.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="container-fluid">
+        <div class="row" style="height: 1000px">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form class="rounded" method="post">
+                    {% csrf_token %}
+                    <div class="form-group"
+                         style="background-color: rgba(255, 250, 250,0.9); padding-left: 100px;padding-top: 30px;padding-bottom: 30px;padding-right: 100px;width: 500px;margin-top: 100px">
+                         <label for="exampleInputEmail1"><h3>Добавить накладную</h3></label>
+                        <br>
+                        <select  name="product">
+                            {% for item in product %}
+                                <option value="{{ item.id }}">{{ item.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <a class="btn btn-outline-dark mr-sm-2" href="{% url 'form_product' %}">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                        </a>
+                        <br>
+                        <select name="customer">
+                            {% for item in customer %}
+                                <option value="{{ item.id }}">{{ item.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <a class="btn btn-outline-dark mr-sm-2" href="{% url 'form_customer' %}">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                        </a>
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Цена"
+                               name='current_price'
+                               aria-label="current_price" style="width: 300px">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Дата"
+                               name='date'
+                               aria-label="date" style="width: 300px">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Количество товаров"
+                               name='number_of_product'
+                               aria-label="number_of_product" style="width: 300px">
+                        <br>
+                        <select name="destination">
+                            {% for item in destination %}
+                                <option value="{{ item.id }}">{{ item.country }}</option>
+                            {% endfor %}
+                        </select>
+                        <a class="btn btn-outline-dark mr-sm-2" href="{% url 'form_destination' %}">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                        </a>
+
+                        <br>
+                        <button type="submit" class="btn btn-dark mr-sm-2">Изменить
+                        </button>
+                        <br>
+                    </div>
+                </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}

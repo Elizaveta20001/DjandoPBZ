@@ -1,0 +1,37 @@
+{% extends 'common.html' %}
+{% block content %}
+    <body class="container-fluid"
+          style="background-image: url('http://www.bvinyl.com/image/catalog/texts/bvinyl-warehouse.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="container-fluid" style="background-color: white">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Накладные</th>
+                <th>Товар</th>
+                <th>Покупатель</th>
+                <th>Текущая цена</th>
+                <th>Дата</th>
+                <th>Количество купленных товаров</th>
+                <th>Пункт назначения</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for item in waybill %}
+                    <tr>
+                    <th scope="row"></th>
+                        <td>{{ item.product.name }}</td>
+                    <td>{{ item.customer.name }}</td>
+                    <td>{{ item.current_price }}</td>
+                        <td>{{ item.date }}</td>
+                        <td>{{ item.number_of_product }}</td>
+                        <td>{{ item.destination.country}}</td>
+                    <td><a href="{% url 'delete_waybill' item.id %}">Удалить</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    </body>
+{% endblock %}
