@@ -11,7 +11,7 @@
                 <th>Покупатель</th>
                 <th>Текущая цена</th>
                 <th>Дата</th>
-                <th>Количество купленных товаров</th>
+                <th>Кол-во купленных товаров</th>
                 <th>Пункт назначения</th>
             </tr>
             </thead>
@@ -24,7 +24,7 @@
                     <td>{{ item.current_price }}</td>
                         <td>{{ item.date }}</td>
                         <td>{{ item.number_of_product }}</td>
-                        <td>{{ item.destination.country}}</td>
+                        <td>{{ item.destination.country}},{{ item.destination.region_name}},{{ item.destination.street}},{{ item.destination.house_number}},{{ item.destination.flat_number}}</td>
                     <td><a href="{% url 'edit_waybill' item.id %}">Редактировать</a></td>
                     </tr>
                 {% endfor %}

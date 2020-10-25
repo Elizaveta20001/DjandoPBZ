@@ -1,0 +1,39 @@
+{% extends 'common.html' %}
+{% block content %}
+    <body class="container-fluid"
+          style="background-image: url('https://www.franchise-ed.org.au/wp-content/uploads/2019/08/AdobeStock_202169920-scaled.jpeg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="container-fluid" style="background-color: white">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Тип</th>
+                <th>Имя</th>
+                <th>Адрес</th>
+                <th>Номер паспорта</th>
+                <th>Серия паспорта</th>
+                <th>Банковские реквизиты</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for item in customer %}
+                    <tr>
+                    <th scope="row">{{ item.id }}</th>
+
+                    <td>{{ item.type }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.address  }}</td>
+                        <td>{{ item.passport_id }}</td>
+                    <td>{{ item.passport_series }}</td>
+                    <td>{{ item.bank_details  }}</td>
+                    <td><a href="{% url 'edit_customer' item.id %}">Редактировать</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    </body>
+{% endblock %}

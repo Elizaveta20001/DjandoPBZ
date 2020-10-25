@@ -1,0 +1,37 @@
+{% extends 'common.html' %}
+{% block content %}
+    <body class="container-fluid"
+          style="background-image: url('http://wp.widewallpapers.ru/2k/cities/new-york/1920x1200/New-York-1920x1200-128.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="container-fluid" style="background-color: white">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Страна</th>
+                <th>Регион</th>
+                <th>Улица</th>
+                <th>Дом</th>
+                <th>Квартира</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for item in destination %}
+                    <tr>
+                    <th scope="row">{{ item.id }}</th>
+
+                    <td>{{ item.country }}</td>
+                    <td>{{ item.region_name }}</td>
+                    <td>{{ item.street  }}</td>
+                        <td>{{ item.house_number}}</td>
+                    <td>{{ item.flat_number }}</td>
+                    <td><a href="{% url 'delete_destination' item.id %}">Удалить</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+    </body>
+{% endblock %}

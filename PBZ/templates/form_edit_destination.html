@@ -1,0 +1,71 @@
+{% extends 'common.html' %}
+{% block content %}
+    <body class="container-fluid"
+          style="background-image: url('http://www.fonstola.ru/download.php?file=201312/1600x900/fonstola.ru-136981.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="container-fluid">
+        <div class="row" style="height: 1000px">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form class="rounded" method="post">
+                    {% csrf_token %}
+                    <div class="form-group"
+                         style="background-color: rgba(255, 250, 250,0.9); padding-left: 100px;padding-top: 30px;padding-bottom: 30px;padding-right: 100px;width: 500px;margin-top: 100px">
+                        <label for="exampleInputEmail1"><h3>Изменить пункт назначения</h3></label>
+                        <br>
+                        {% if error == True %}
+                        <input class="form-control mr-sm-2" type="text" placeholder="Страна"
+                               name='country'
+                               aria-label="country" style="width: 300px;border-color: red" value="{{ destination.country }}">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Регион"
+                               name='region_name'
+                               aria-label="region_name" style="width: 300px;border-color: red" value="{{ destination.region_name}}">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Улица"
+                               name='street'
+                               aria-label="street" style="width: 300px;border-color: red" value="{{ destination.street}}">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Дом"
+                               name='house_number'
+                               aria-label="house_number" style="width: 300px;border-color: red" value="{{ destination.house_number}}">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Квартира"
+                               name='flat_number'
+                               aria-label="flat_number" style="width: 300px;border-color: red" value="{{ destination.flat_number}}">
+                        <br>
+                        <br>
+                        {% else %}
+                         <input class="form-control mr-sm-2" type="text" placeholder="Страна"
+                               name='country'
+                               aria-label="country" style="width: 300px" value="{{ destination.country}}">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Регион"
+                               name='region_name'
+                               aria-label="region_name" style="width: 300px" value="{{ destination.region_name}}">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Улица"
+                               name='street'
+                               aria-label="street" style="width: 300px" value="{{ destination.street}}">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Дом"
+                               name='house_number'
+                               aria-label="house_number" style="width: 300px" value="{{ destination.house_number}}">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Квартира"
+                               name='flat_number'
+                               aria-label="flat_number" style="width: 300px" value="{{ destination.flat_number}}">
+                        <br>
+                        <br>
+                        {% endif %}
+                        <button type="submit" class="btn btn-dark mr-sm-2">Изменить
+                        </button>
+                        <br>
+                    </div>
+                </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}

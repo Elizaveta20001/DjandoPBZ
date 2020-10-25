@@ -1,7 +1,60 @@
-{% extends 'common.html' %}
-{% block content %}
-    <body class="container-fluid"
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PBZ</title>
+    <link  href="css/bootstrap.min.css">
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<style>
+    body {
+        padding-top: 100px;
+    }
+
+</style>
+<body class="container-fluid"
           style="background-image: url('https://diamantvrn.ru/files/images/sklad.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="http://127.0.0.1:8000/">PBZ</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/product_page" id="navbarDropdown" role="button"
+                   aria-haspopup="true" aria-expanded="false">
+                    Товары
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'page_waybill' %}" id="navbarDropdown" role="button"
+                   aria-haspopup="true" aria-expanded="false">
+                    Накладные
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Просмотр
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'show_customer' %}">Просмотр списка покупателей, сделавших покупку на максимальную
+                        сумму на выбранную дату </a>
+                    <a class="dropdown-item" href="{% url 'price_change' %}">Просмотр списка изменений стоимости заданного товара за указанный
+                        период времени </a>
+                    <a class="dropdown-item" href="{% url 'show_category' %}">Просмотр списка существующих категорий товаров</a>
+
+                </div>
+
+            </li>
+
+        </ul>
+    </div>
+</nav>
     <div class="container-fluid">
         <div class="row" style="height: 1000px">
             <div class="col-4"></div>
@@ -55,5 +108,7 @@
         </div>
     </div>
 
-    </body>
-{% endblock %}
+</body>
+</html>
+
+

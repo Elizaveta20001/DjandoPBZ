@@ -106,7 +106,7 @@
                         <br>
                         <select style="width: 225px;height: 30px;margin-bottom: 30px"name="destination">
                             {% for item in destination %}
-                                <option value="{{ item.id }}">{{ item.country }}</option>
+                                <option value="{{ item.id }}">{{ item.country}},{{ item.region_name}},{{ item.street}},{{ item.house_number}},{{ item.flat_number}}</option>
                             {% endfor %}
                         </select>
                         <a class="btn btn-outline-dark mr-sm-2" href="{% url 'form_destination' %}">

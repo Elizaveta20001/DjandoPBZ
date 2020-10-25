@@ -1,0 +1,79 @@
+{% extends 'common.html' %}
+{% block content %}
+    <body class="container-fluid"
+          style="background-image: url('https://sugar.by/img/information.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="container-fluid">
+        <div class="row" style="height: 1000px">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form class="rounded" method="post" action="{% url 'create_customer_add' %}">
+                    {% csrf_token %}
+                    <div class="form-group"
+                         style="background-color: rgba(255, 250, 250,0.9); padding-left: 100px;padding-top: 30px;padding-bottom: 30px;padding-right: 100px;width: 500px;margin-top: 100px">
+                        <label for="exampleInputEmail1"><h3>Добавить покупателя</h3></label>
+                        <br>
+                        {% if error == True %}
+                        <input class="form-control mr-sm-2" type="text" placeholder="Тип"
+                               name='type'
+                               aria-label="type" style="width: 300px;border-color: red">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Имя"
+                               name='name'
+                               aria-label="name" style="width: 300px;border-color: red">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Адрес"
+                               name='address'
+                               aria-label="address" style="width: 300px;border-color: red">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Номер паспорта"
+                               name='passport_id'
+                               aria-label="passport_id" style="width: 300px;border-color: red">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Серия паспорта"
+                               name='passport_series'
+                               aria-label="passport_series" style="width: 300px;border-color: red">
+                        <br>
+                         <input class="form-control mr-sm-2" type="text" placeholder="Банковские реквизиты"
+                               name='bank_details'
+                               aria-label="bank_details" style="width: 300px;border-color: red">
+                        <br>
+                        <br>
+                        {% else %}
+                        <input class="form-control mr-sm-2" type="text" placeholder="Тип"
+                               name='type'
+                               aria-label="type" style="width: 300px">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Имя"
+                               name='name'
+                               aria-label="name" style="width: 300px">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Адрес"
+                               name='address'
+                               aria-label="address" style="width: 300px">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Номер паспорта"
+                               name='passport_id'
+                               aria-label="passport_id" style="width: 300px">
+                        <br>
+                        <input class="form-control mr-sm-2" type="text" placeholder="Серия паспорта"
+                               name='passport_series'
+                               aria-label="passport_series" style="width: 300px">
+                        <br>
+                         <input class="form-control mr-sm-2" type="text" placeholder="Банковские реквизиты"
+                               name='bank_details'
+                               aria-label="bank_details" style="width: 300px">
+                        <br>
+                        <br>
+                        {% endif %}
+                        <button type="submit" class="btn btn-dark mr-sm-2">Добавить
+                        </button>
+                        <br>
+                    </div>
+                </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}
