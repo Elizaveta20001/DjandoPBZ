@@ -2,7 +2,12 @@ from django.urls import path
 from PBZ import views
 
 urlpatterns = [
-    path('', views.home_page),
+    path('',views.form_user, name='form_user'),
+    path('form_registration',views.form_registration,name='form_reg'),
+    path('logout',views.do_logout,name='logout'),
+    path('registration',views.registration,name='registration'),
+    path('login',views.login_user, name='login'),
+    path('home_page', views.home_page, name='home_page'),
     path('product_page', views.page_product, name='product_page'),
     path('form_product', views.form_product, name='form_product'),
     path('create_product', views.create_product, name='create_product'),

@@ -26,6 +26,20 @@
                 {% endfor %}
             </tbody>
         </table>
+<ul class="pagination justify-content-center">
+
+    <li class="step-links">
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo; Первая</a></li>
+        {% if product.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ product.previous_page_number }}">Предыдущая</a></li>
+        {% endif %}
+
+        {% if product.has_next %}
+            <li class="page-item"><a  class="page-link" href="?page={{ product.next_page_number }}">Следующая</a></li>
+        {% endif %}
+        <li class="page-item"><a  class="page-link" href="?page={{ product.paginator.num_pages }}"> Последняя &raquo;</a></li>
+    </span>
+</ul>
 
     </div>
 

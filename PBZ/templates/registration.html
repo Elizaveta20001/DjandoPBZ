@@ -1,0 +1,71 @@
+{% extends 'common.html' %}
+{% block content %}
+    <body class="container-fluid"
+          style="background-image: url('https://sugar.by/img/information.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="container-fluid">
+        <div class="row" style="height: 1000px">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form class="rounded" method="post" action="{% url 'registration' %}">
+                    {% csrf_token %}
+                    <div class="form-group"
+                         style="background-color: rgba(255, 250, 250,0.9); padding-left: 100px;padding-top: 30px;padding-bottom: 30px;padding-right: 100px;width: 500px;margin-top: 100px">
+                        <label for="exampleInputEmail1"><h3>Добавить покупателя</h3></label>
+                        <br>
+                        {% if error == True %}
+                        <input id='input_username' class="form-control mr-sm-2" type="text" placeholder="Имя пользователя"
+                               name='username'
+                               aria-label="username" style="width: 300px;border-color:red">
+                        <br>
+                        <input id='input_password' class="form-control mr-sm-2" type="password" placeholder="Пароль"
+                               name='password'
+                               aria-label="password" style="width: 300px;border-color: red">
+                        <br>
+                        <input id='input_first_name' class="form-control mr-sm-2" type="text" placeholder="Имя"
+                               name='first_name'
+                               aria-label="first_name" style="width: 300px;border-color: red">
+                        <br>
+                        <input id='input_last_name' class="form-control mr-sm-2" type="text" placeholder="Фамилия"
+                               name='last_name'
+                               aria-label="last_name" style="width: 300px;border-color: red">
+                        <br>
+                        <input id='input_email' class="form-control mr-sm-2" type="text" placeholder="Почта"
+                               name='email'
+                               aria-label="email" style="width: 300px;border-color: red">
+                        <br>
+                        <br>
+                        {% else %}
+                        <input id='input_username' class="form-control mr-sm-2" type="text" placeholder="Имя пользователя"
+                               name='username'
+                               aria-label="username" style="width: 300px">
+                        <br>
+                        <input id='input_password' class="form-control mr-sm-2" type="password" placeholder="Пароль"
+                               name='password'
+                               aria-label="password" style="width: 300px">
+                        <br>
+                        <input id='input_first_name' class="form-control mr-sm-2" type="text" placeholder="Имя"
+                               name='first_name'
+                               aria-label="first_name" style="width: 300px">
+                        <br>
+                        <input id='input_last_name' class="form-control mr-sm-2" type="text" placeholder="Фамилия"
+                               name='last_name'
+                               aria-label="last_name" style="width: 300px">
+                        <br>
+                        <input id='input_email' class="form-control mr-sm-2" type="text" placeholder="Почта"
+                               name='email'
+                               aria-label="email" style="width: 300px">
+                        <br>
+                        <br>
+                        {% endif %}
+                        <button type="submit" class="btn btn-dark mr-sm-2">Зарегистрироваться
+                        </button>
+                        <br>
+                    </div>
+                </form>
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}

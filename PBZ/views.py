@@ -1,14 +1,23 @@
+from django.contrib.auth.models import User
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
 from PBZ.models import *
 from django.shortcuts import HttpResponseRedirect
 from django.db.models import Max
 import datetime
+from django.contrib.auth import authenticate, login, logout
 import re
 
 
 def home_page(request):
-    return render(request, 'home_page.html', {})
+    context = {}
+    if request.user.is_authenticated:
+        context['flag'] = True
+        context['name'] = request.user.username
+    else:
+        context['flag'] = False
+    return render(request, 'home_page.html', context)
 
 
 def page_product(request):
@@ -33,9 +42,17 @@ def create_product(request):
 
 
 def edit_page(request):
-    context = {}
-    context['product'] = Product.objects.all()
-    return render(request, 'edit_page.html', context)
+    list1 = Product.objects.all()
+    paginator = Paginator(list1, 10)
+    page = request.GET.get('page', 1)
+    try:
+        list1 = paginator.page(page)
+    except PageNotAnInteger:
+        list1 = paginator.page(1)
+    except EmptyPage:
+        list1 = paginator.page(paginator.num_pages)
+    return render(request, 'edit_page.html', {'product':list1,'page' : page})
+
 
 
 def edit_product(request, product_id):
@@ -60,9 +77,16 @@ def edit_product(request, product_id):
 
 
 def delete_page(request):
-    context = {}
-    context['product'] = Product.objects.all()
-    return render(request, 'delete_page.html', context)
+    list1 = Product.objects.all()
+    paginator = Paginator(list1, 10)
+    page = request.GET.get('page', 1)
+    try:
+        list1 = paginator.page(page)
+    except PageNotAnInteger:
+        list1 = paginator.page(1)
+    except EmptyPage:
+        list1 = paginator.page(paginator.num_pages)
+    return render(request, 'delete_page.html', {'product': list1, 'page': page})
 
 
 def delete_product(request, product_id):
@@ -134,8 +158,9 @@ def create_customer(request):
         passport_id = request.POST['passport_id']
         passport_series = request.POST['passport_series']
         bank_details = request.POST['bank_details']
-        Customer.objects.create(type=type, name=name, address=address, passport_id=passport_id, passport_series=passport_series,
-                 bank_details=bank_details)
+        Customer.objects.create(type=type, name=name, address=address, passport_id=passport_id,
+                                passport_series=passport_series,
+                                bank_details=bank_details)
         return HttpResponseRedirect('/form_waybill')
 
 
@@ -156,7 +181,7 @@ def create_destination(request):
         house_number = request.POST['house_number']
         flat_number = request.POST['flat_number']
         Destination.objects.create(country=country, region_name=region_name, street=street, house_number=house_number,
-                    flat_number=flat_number)
+                                   flat_number=flat_number)
         return HttpResponseRedirect('/form_waybill')
 
 
@@ -173,7 +198,7 @@ def create_waybill(request):
         number_of_product = request.POST['number_of_product']
         destination = Destination.objects.get(id=request.POST['destination'])
         Waybill.objects.create(product=product, customer=customer, current_price=current_price, date=date,
-                number_of_product=number_of_product, destination=destination)
+                               number_of_product=number_of_product, destination=destination)
         return HttpResponseRedirect('/page_waybill')
 
 
@@ -413,14 +438,14 @@ def edit_destination(request, destination_id):
         context['destination'] = destination
         if request.method == "POST":
             if (request.POST["country"] == '' or request.POST["region_name"] == '' or request.POST["street"] == '' or
-                    request.POST["house_number"] == '' or request.POST["flat_number"] == '' ):
+                    request.POST["house_number"] == '' or request.POST["flat_number"] == ''):
                 context['error'] = True
                 return render(request, 'form_edit_destination.html', context)
             else:
                 destination.country = request.POST["country"]
                 destination.region_name = request.POST["region_name"]
                 destination.street = request.POST["street"]
-                destination.house_number= request.POST["house_number"]
+                destination.house_number = request.POST["house_number"]
                 destination.flat_number = request.POST["flat_number"]
                 destination.save()
                 return HttpResponseRedirect("/edit_destination_page")
@@ -429,20 +454,26 @@ def edit_destination(request, destination_id):
     except Destination.DoesNotExist:
         return HttpResponseNotFound("<h2>Destination not found</h2>")
 
+
 def delete_page_destination(request):
     context = {}
     context['destination'] = Destination.objects.all()
     return render(request, 'delete_page_destination.html', context)
 
+
 def delete_destination(request, destination_id):
     try:
-        destination =Destination.objects.get(id=destination_id)
+        destination = Destination.objects.get(id=destination_id)
         destination.delete()
         return HttpResponseRedirect('/delete_destination_page')
     except Destination.DoesNotExist:
         return HttpResponseNotFound("<h2>Destination not found</h2>")
+
+
 def create_customer_form(request):
-    return render(request,'create_customer_form.html',{})
+    return render(request, 'create_customer_form.html', {})
+
+
 def create_customer_add(request):
     if request.POST['type'] == '' or request.POST['name'] == '' or request.POST['address'] == '' or request.POST[
         'passport_id'] == '' or request.POST['passport_series'] == '' or request.POST['bank_details'] == '':
@@ -460,8 +491,10 @@ def create_customer_add(request):
                  bank_details=bank_details).save()
         return HttpResponseRedirect('/page_customer')
 
+
 def create_destination_page(request):
-    return render(request,'create_destination_page.html',{})
+    return render(request, 'create_destination_page.html', {})
+
 
 def create_destination_add(request):
     if request.POST['country'] == '' or request.POST['region_name'] == '' or request.POST['street'] == '' or \
@@ -478,3 +511,57 @@ def create_destination_add(request):
         Destination(country=country, region_name=region_name, street=street, house_number=house_number,
                     flat_number=flat_number).save()
         return HttpResponseRedirect('page_destination')
+
+
+def form_user(request):
+    return render(request, 'login.html', {'error': False})
+
+
+def login_user(request):
+    context = {}
+    user = authenticate(
+        username=request.POST['username'],
+        password=request.POST['password']
+    )
+    if user is None:
+        context['flag'] = False
+        return render(request, 'form.html',
+                      {'error': True})
+    else:
+        login(request, user)
+        return HttpResponseRedirect('home_page')
+
+
+def do_logout(request):
+    if request.user.is_authenticated:
+        logout(request)
+        return HttpResponseRedirect('http://127.0.0.1:8000/')
+    else:
+        return render(request, 'error.html', {})
+
+
+def registration(request):
+    if check_data(request.POST['username'], request.POST['password'], request.POST['first_name'],
+                  request.POST['last_name'], request.POST['email']) == True:
+        user = User.objects.create_user(
+            username=request.POST['username'],
+            password=request.POST['password'],
+            first_name=request.POST['first_name'],
+            last_name=request.POST['last_name'],
+            email=request.POST['email']
+        )
+        return HttpResponseRedirect('http://127.0.0.1:8000/')
+    else:
+        return render(request, 'registration.html',
+                      {'error': True})
+
+
+def check_data(username, password, first_name, last_name, email):
+    if username == '' or password == '' or first_name == '' or last_name == '' or email == '':
+        return False
+    else:
+        return True
+
+
+def form_registration(request):
+    return render(request, 'registration.html', {})

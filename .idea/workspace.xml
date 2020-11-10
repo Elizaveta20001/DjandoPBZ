@@ -19,30 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78681393-d09e-467b-9895-97cae3a264b5" name="Default Changelist" comment="Added function for show price change">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/additional.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/create_customer_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/create_destination_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/delete_page_customer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/delete_page_destination.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/edit_customer_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/edit_page_destination.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/form_edit_customer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/form_edit_destination.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/page_customer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PBZ/templates/page_destination.html" afterDir="false" />
+    <list default="true" id="78681393-d09e-467b-9895-97cae3a264b5" name="Default Changelist" comment="Final commit">
+      <change afterPath="$PROJECT_DIR$/PBZ/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PBZ/templates/registration.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PBZ/templates/common.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/common.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PBZ/templates/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PBZ/templates/edit_waybill.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/edit_waybill.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PBZ/templates/form_for_edit_waybill.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/form_for_edit_waybill.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PBZ/templates/form_waybill.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/form_waybill.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PBZ/templates/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/home_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PBZ/templates/delete_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/delete_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PBZ/templates/edit_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/templates/edit_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PBZ/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PBZ/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/PBZ/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/djangoProject1/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/djangoProject1/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +133,9 @@
       <workItem from="1603372328887" duration="38000" />
       <workItem from="1603522081075" duration="34000" />
       <workItem from="1603523113453" duration="197000" />
+      <workItem from="1603643608855" duration="47000" />
+      <workItem from="1603893548609" duration="2000" />
+      <workItem from="1604838570266" duration="6770000" />
     </task>
     <task id="LOCAL-00001" summary="first_commit">
       <created>1602611312638</created>
@@ -232,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603045879103</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Final commit">
+      <created>1603643626477</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1603643626477</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,7 +259,8 @@
     <MESSAGE value="Fix def form_waybill" />
     <MESSAGE value="Added function for delete waybill" />
     <MESSAGE value="Added function for show price change" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added function for show price change" />
+    <MESSAGE value="Final commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603049048012">
@@ -278,22 +275,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="634" y="310" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1602611143830" />
-    <state width="1493" height="355" key="GridCell.Tab.0.bottom" timestamp="1603295361066">
+    <state width="1493" height="355" key="GridCell.Tab.0.bottom" timestamp="1604845813903">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="355" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603295361066" />
-    <state width="1493" height="355" key="GridCell.Tab.0.center" timestamp="1603295361066">
+    <state width="1493" height="355" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604845813903" />
+    <state width="1493" height="355" key="GridCell.Tab.0.center" timestamp="1604845813901">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="355" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603295361066" />
-    <state width="1493" height="355" key="GridCell.Tab.0.left" timestamp="1603295361065">
+    <state width="1493" height="355" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604845813901" />
+    <state width="1493" height="355" key="GridCell.Tab.0.left" timestamp="1604845813901">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="355" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603295361065" />
-    <state width="1493" height="355" key="GridCell.Tab.0.right" timestamp="1603295361066">
+    <state width="1493" height="355" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604845813901" />
+    <state width="1493" height="355" key="GridCell.Tab.0.right" timestamp="1604845813902">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="355" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603295361066" />
+    <state width="1493" height="355" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604845813902" />
     <state width="1478" height="258" key="GridCell.Tab.1.bottom" timestamp="1602684435914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -314,10 +311,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1603146958949" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603045880378">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603643627516">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603045880378" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1603643627516" />
     <state x="375" y="23" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1603190278049">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
