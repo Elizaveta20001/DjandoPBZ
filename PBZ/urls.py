@@ -43,6 +43,7 @@ urlpatterns = [
     path('create_customer_add',views.create_customer_add,name='create_customer_add'),
     path('create_customer_form',views.create_customer_form,name='create_customer_form'),
     path('create_destination_form',views.create_destination_page,name='create_destination_form'),
-    path('create_destination_add',views.create_destination_add,name='create_destination_add')
+    path('create_destination_add',views.create_destination_add,name='create_destination_add'),
+    path('search_product',views.search,name='seach_product')
 
 ]

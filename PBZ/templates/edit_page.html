@@ -2,6 +2,12 @@
 {% block content %}
     <body class="container-fluid"
           style="background-image: url('http://www.bvinyl.com/image/catalog/texts/bvinyl-warehouse.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+     <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'seach_product' %}">
+          {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search" name="search" style="width: 400px">
+      <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+    </form>
+     <br>
     <div class="container-fluid" style="background-color: white">
         <table class="table table-bordered">
             <thead>

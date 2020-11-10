@@ -565,3 +565,24 @@ def check_data(username, password, first_name, last_name, email):
 
 def form_registration(request):
     return render(request, 'registration.html', {})
+
+def search(request):
+    if request.POST['search'] != '':
+        temp = str(request.POST['search'])
+        list1 = []
+        for i in Product.objects.all():
+            if temp in i.name:
+                list1.append(i)
+        paginator = Paginator(list1, 10)
+        page = request.GET.get('page', 1)
+        try:
+            list1 = paginator.page(page)
+        except PageNotAnInteger:
+            list1 = paginator.page(1)
+        except EmptyPage:
+            list1 = paginator.page(paginator.num_pages)
+        return render(request, 'edit_page.html', {'product': list1, 'page': page})
+
+
+    else:
+        return HttpResponseRedirect('edit_page')
